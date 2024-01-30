@@ -115,7 +115,7 @@ def send_requests(rule_data, self_data):
     else:
         print(f'{bcolors.HEADER} WAF放行 {bcolors.ENDC}')
 
-    http_header, http_body = http_ua.request.split(b"\r\n\r\n")
+    http_header, http_body = http_ua.request.split(b"\r\n\r\n")[0], http_ua.request.split(b"\r\n\r\n")[1]
 
     if not self_data["requestheader"]:
         print(http_header.decode())
