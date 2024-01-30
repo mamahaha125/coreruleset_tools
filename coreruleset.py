@@ -157,7 +157,6 @@ def main():
     parse.add_argument('-f', '--file', help='   多个规则', type=argparse.FileType('r'))
 
     args = parse.parse_args()
-    # print(args.req_header)
     self_data = {}
     self_data["requestheader"] = False
     self_data["requestbody"] = False
@@ -193,10 +192,8 @@ def main():
     self_data["HTTP版本"] = "HTTP/1.1"
     if args.version:
         self_data["HTTP版本"] = args.version
-        # print(self_data["协议版本"])
 
     current_path = Path(__file__).parents[0]
-    print(current_path)
     ddd = get_filelist(current_path, [args.rule])
 
     list = []
@@ -207,7 +204,6 @@ def main():
 
 
 
-    print(verofy_rules)
     for l in list:
         # print(l)
         send_requests(l, self_data)
