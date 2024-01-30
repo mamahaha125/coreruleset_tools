@@ -120,7 +120,7 @@ def send_requests(rule_data, self_data):
     if not self_data["requestheader"]:
         print(http_header.decode())
     if not self_data["requestbody"]:
-        print("\r\n" + http_body.decode())
+        print("\r\n" + http_body.decode() + "\r\n")
         pass
     if not self_data["responseheader"]:
         print(http_ua.response_object.response_line)
