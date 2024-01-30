@@ -219,7 +219,11 @@ def main():
     print(f'{bcolors.OKBLUE} {str(verofy_rules -  FIALD)}{bcolors.ENDC}')
 
 
-    print(' 拦截率:   {:.2%}'.format(FIALD/verofy_rules), end="")
+    if FIALD == 0 and verofy_rules == 0:
+        waf_pecent = 0
+    else:
+        waf_pecent = FIALD / verofy_rules
+    print(' 拦截率:   {:.2%}'.format(waf_pecent), end="")
 
 if __name__ == "__main__":
     main()
