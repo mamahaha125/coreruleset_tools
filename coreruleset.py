@@ -36,6 +36,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 FIALD = 0
+PASS_RULES = list()
 
 def rules_detailf(rules_dict):
     """
@@ -114,7 +115,8 @@ def send_requests(rule_data, self_data):
         FIALD = FIALD + 1
     else:
         print(f'{bcolors.HEADER} WAF放行 {bcolors.ENDC}')
-
+        PASS_RULES.append(rule_data["test_title"])
+     
     http_header, http_body = http_ua.request.split(b"\r\n\r\n")[0], http_ua.request.split(b"\r\n\r\n")[1]
 
     if not self_data["requestheader"]:
@@ -217,7 +219,7 @@ def main():
 
     print(f'{bcolors.OKBLUE} {"放行请求:"} {bcolors.ENDC}', end="")
     print(f'{bcolors.OKBLUE} {str(verofy_rules -  FIALD)}{bcolors.ENDC}')
-
+    print(' 放行ID:   {}'.format(PASS_RULES))
 
     if FIALD == 0 and verofy_rules == 0:
         waf_pecent = 0
