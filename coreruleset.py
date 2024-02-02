@@ -225,7 +225,7 @@ def main():
         waf_pecent = 0
     else:
         waf_pecent = FIALD / verofy_rules
-    print(' 拦截率:   {:.2%}'.format(waf_pecent), end="")
+    print(' 拦截率:   {:.2%}'.format(waf_pecent))
     print(' 放行ID:   {}'.format(PASS_RULES))
  
 if __name__ == "__main__":
